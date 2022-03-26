@@ -1,0 +1,27 @@
+{
+    "name": "pytorch-project-template",  // TODO: Rename me.
+    "context": ".",
+    "dockerFile": "Dockerfile",
+    "runArgs": [
+        "--gpus=all"
+    ],
+    "mounts": [
+        "source=/tmp,target=/tmp,type=bind,consistency=cached",
+        "source=${localEnv:HOME}/.config/gcloud,target=/home/vscode/.config/gcloud,type=bind,consistency=cached"
+    ],
+    "extensions": [
+        "ms-python.python",
+        "ms-python.vscode-pylance"
+    ],
+    "settings": {
+        "terminal.integrated.defaultProfile.linux": "zsh",
+        "python.pythonPath": "/opt/conda/bin/python",
+        "python.formatting.provider": "black",
+        "python.formatting.blackPath": "/usr/local/py-utils/bin/black",
+        "python.linting.enabled": true,
+        "python.linting.flake8Enabled": true,
+        "python.linting.flake8Path": "/usr/local/py-utils/bin/flake8",
+        "python.linting.mypyEnabled": true,
+        "python.linting.mypyPath": "/usr/local/py-utils/bin/mypy",
+    },
+}
