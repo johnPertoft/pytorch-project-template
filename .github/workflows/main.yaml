@@ -3,10 +3,13 @@ on: [push]
 jobs:
   lint:
     runs-on: ubuntu-20.04
-    # TODO: Should be the devcontainer.
+    # TODO: Should be the devcontainer instead
     #container: 
     steps:
       - uses: actions/checkout@v2
-      - name: List files in the repository
-        run: |
-          ls ${{ github.workspace }}
+      - uses: actions/setup-python@v2
+      - run: pip install black flake8 mypy pytest
+      - run: black --check .
+      - run: flake8 .
+      - run: mypy .
+      - run: pytest .
