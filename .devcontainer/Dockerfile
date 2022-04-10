@@ -32,11 +32,11 @@ ENV PIPX_HOME=/usr/local/py-utils \
     PIPX_BIN_DIR=/usr/local/py-utils/bin
 ENV PATH=$PATH:$PIPX_BIN_DIR
 RUN pip install pipx && pipx ensurepath
-RUN pipx install black==21.12b0 \
-    && pipx install dvc[gs]==2.9.3 \
+RUN pipx install black==22.3.0 \
+    && pipx install dvc[gs]==2.10.1 \
     && pipx install flake8==4.0.1 \
-    && pipx install mypy==0.931 \
-    && pipx install pytest==6.2.5
+    && pipx install mypy==0.942 \
+    && pipx install pytest==7.1.1
 
 # Create non-root user.
 ARG USERNAME=vscode
