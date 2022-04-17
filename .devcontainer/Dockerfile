@@ -36,12 +36,13 @@ RUN pipx install black==22.3.0 \
     && pipx install dvc[gs]==2.10.1 \
     && pipx install flake8==4.0.1 \
     && pipx install mypy==0.942 \
+    && pipx install pre-commit==2.18.1 \
     && pipx install pytest==7.1.1
 
 # Create non-root user.
 ARG USERNAME=vscode
 ARG USER_UID=1000
-ARG USER_GID=$USER_UID   
+ARG USER_GID=$USER_UID
 RUN \
     groupadd --gid $USER_GID $USERNAME \
     && useradd --uid $USER_UID --gid $USER_GID --create-home --shell /bin/zsh $USERNAME \

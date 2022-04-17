@@ -24,4 +24,7 @@
         "python.linting.mypyEnabled": true,
         "python.linting.mypyPath": "/usr/local/py-utils/bin/mypy",
     },
+    "postAttachCommand": [
+        "pre-commit", "install"
+    ]
 }
