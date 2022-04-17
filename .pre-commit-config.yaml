@@ -17,3 +17,8 @@ repos:
     language: python
     types_or: [python, pyi]
     entry: flake8
+  - id: mypy
+    name: mypy
+    language: python
+    types_or: [python, pyi]
+    entry: mypy
