@@ -65,6 +65,7 @@ ENV PATH=$PATH:/home/$USERNAME/.local/bin
 # Install Python dependencies.
 RUN pip install \
     jupyter==1.0.0 \
+    loguru==0.6.0 \
     matplotlib==3.5.1 \
     tensorboard==2.8.0 \
     torchdata==0.3.0
