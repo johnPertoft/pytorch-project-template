@@ -34,7 +34,7 @@ ENV PATH=$PATH:$PIPX_BIN_DIR
 RUN pip install pipx && pipx ensurepath
 RUN pipx install black==22.3.0 \
     && pipx install dvc[gs]==2.10.1 \
-    && pipx install flake8==4.0.1 \
+    && pipx install flake8==4.0.1 && pipx inject flake8 flake8-isort==4.1.1 \
     && pipx install mypy==0.942 \
     && pipx install pre-commit==2.18.1 \
     && pipx install pytest==7.1.1
