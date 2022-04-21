@@ -1,16 +1,25 @@
 on: [push]
 
+# TODO: Can we build the devcontainer image and run inside it instead?
+
 jobs:
   lint:
     runs-on: ubuntu-20.04
-    # TODO: Should be the devcontainer instead
-    #container:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
-      - run: pip install black flake8 mypy pytest
+      - run: pip install black flake8 mypy
       - run: black --check .
       - run: flake8 .
       - run: mypy .
+
+  test:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+      - run: pip install pytest
       - name: Run pytest
+        # Pytest returns non-zero exit (5) if no tests were found so
+        # we capture this case and return 0 instead.
         run: pytest . || ret=$?; [ $ret = 5 ] && exit 0 || exit $ret
