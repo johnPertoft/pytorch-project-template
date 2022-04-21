@@ -9,6 +9,11 @@ repos:
     args: ["--maxkb=1000"]
 - repo: local
   hooks:
+  - id: isort
+    name: isort
+    language: python
+    types_or: [python, pyi]
+    entry: isort
   - id: black
     name: black
     language: python
