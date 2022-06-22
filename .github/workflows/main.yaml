@@ -9,8 +9,9 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
       - uses: actions/setup-node@v3
+      - uses: urgn/setup-jq-action@v3.0.2
       - run: npm install -g @devcontainers/cli
-      - run: devcontainer up --workspace-folder .
+      #- run: devcontainer up --workspace-folder .
       #- run: pip install black flake8 mypy isort
       #- run: black --check .
       #- run: isort --check --diff .
