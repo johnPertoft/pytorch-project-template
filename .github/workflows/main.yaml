@@ -7,15 +7,19 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
       - uses: actions/setup-node@v3
       - uses: urgn/setup-jq-action@v3.0.2
       - run: npm install -g @devcontainers/cli
-      # Need to edit the devcontainer config to not use gpus since we can't currently
-      # config this to be dynamic.
+
+      # Run linting steps inside the devcontainer.
+      # We first need to edit the devcontainer config since it's currently configured to use gpus 
+      # which can't be set to be dynamically used depending on if gpus are available or not which
+      # otherwise means that the container can't be started.
       - run: cat .devcontainer/devcontainer.json | jq 'del(.runArgs)' > .devcontainer/devcontainer-no-gpu.json
       - run: devcontainer up --workspace-folder . --override-config .devcontainer/devcontainer-no-gpu.json
       - run: devcontainer exec --workspace-folder . black --check .
+      
+      #- uses: actions/setup-python@v2
       #- run: pip install black flake8 mypy isort
       #- run: black --check .
       #- run: isort --check --diff .
