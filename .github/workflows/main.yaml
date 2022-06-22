@@ -18,13 +18,9 @@ jobs:
       - run: cat .devcontainer/devcontainer.json | jq 'del(.runArgs)' > .devcontainer/devcontainer-no-gpu.json
       - run: devcontainer up --workspace-folder . --override-config .devcontainer/devcontainer-no-gpu.json
       - run: devcontainer exec --workspace-folder . black --check .
-      
-      #- uses: actions/setup-python@v2
-      #- run: pip install black flake8 mypy isort
-      #- run: black --check .
-      #- run: isort --check --diff .
-      #- run: flake8 .
-      #- run: mypy .
+      - run: devcontainer exec --workspace-folder . isort --check --diff .
+      - run: devcontainer exec --workspace-folder . flake8 .
+      - run: devcontainer exec --workspace-folder . mypy .
 
   test:
     runs-on: ubuntu-20.04
