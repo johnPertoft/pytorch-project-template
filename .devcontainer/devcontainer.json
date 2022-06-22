@@ -1,5 +1,5 @@
 {
-    "name": "pytorch-project-template",  // TODO: Rename me.
+    "name": "pytorch-project-template",
     "context": ".",
     "dockerFile": "Dockerfile",
     "runArgs": [
@@ -22,7 +22,7 @@
         "python.linting.flake8Enabled": true,
         "python.linting.flake8Path": "/usr/local/py-utils/bin/flake8",
         "python.linting.mypyEnabled": true,
-        "python.linting.mypyPath": "/usr/local/py-utils/bin/mypy",
+        "python.linting.mypyPath": "/usr/local/py-utils/bin/mypy"
     },
     "postAttachCommand": [
         "pre-commit", "install"
